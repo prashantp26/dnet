@@ -6,6 +6,10 @@ CHECKLIST.md
 *.sln.docstates
 .vscode/
 
+# project intermedial and build files
+
+*/obj/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
