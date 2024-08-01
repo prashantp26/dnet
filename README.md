@@ -4,8 +4,6 @@
 > As a project, it is essentially the foundations for a homebrew ORM - a simple learning WIP tool.
 > Bullet items with ~~strikethrough~~ represent unfinished tasks.
 
-This repo attempts to demonstrate use of following C#/.Net, and to some extent, some relevant CS concepts through a Blazor webapp project in .Net 8:
-
 ```mermaid
 ---
 title: Data mapper
@@ -16,6 +14,8 @@ flowchart TB
 	DataContext -- -.loaded-onto.-> --> RepoBase
     EntityRepo -- injected-thru --> RepoMan 	
 ```
+
+#### This repo attempts to demonstrate use of following C#/.Net, and to some extent, some relevant CS concepts through a Blazor webapp project in .Net 8:
 
 ### Types
 - use of compound data types
