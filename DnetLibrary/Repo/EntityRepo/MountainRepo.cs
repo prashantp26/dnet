@@ -3,7 +3,7 @@ using DnetLibrary.Domain;
 namespace DnetLibrary.Repo.EntityRepo
 
 {
-    public class MountainRepo(IRepoContext<Mountain> context) : RepoBase<Mountain>(context)
+    public sealed class MountainRepo(IRepoContext<Mountain> context) : RepoBase<Mountain>(context)
     {
         private IRepoContext<Mountain> BaseContext => Context; //context inherited from RepoBase
 
