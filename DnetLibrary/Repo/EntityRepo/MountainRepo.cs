@@ -5,11 +5,12 @@ namespace DnetLibrary.Repo.EntityRepo
 {
     public class MountainRepo(IRepoContext<Mountain> context) : RepoBase<Mountain>(context)
     {
-        public IRepoContext<Mountain> BaseContext => Context; //context inherited from RepoBase
+        private IRepoContext<Mountain> BaseContext => Context; //context inherited from RepoBase
 
-        public Task<IEnumerable<Mountain>> TallestPeak()
+        public async Task<IEnumerable<Mountain>> TallestPeak()
         {
-            return Task.FromResult(Enumerable.Empty<Mountain>());
+            var allMountains = await BaseContext.GetAll();
+            return allMountains.Where(mountain => mountain.ToString().Length > 5);
         }
     }
 }

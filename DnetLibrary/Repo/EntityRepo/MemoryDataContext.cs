@@ -1,20 +1,21 @@
 using DnetLibrary.Domain;
+using DnetLibrary.Repo.Data;
 
 namespace DnetLibrary.Repo.EntityRepo;
 
-public class MemoryDataContext<TEntity>: IRepoContext<TEntity>
+public class MemoryDataContext<TEntity>(CommonTypes.EntityToken token) : IRepoContext<TEntity>
 {
-    public MemoryDataContext(CommonTypes.EntityToken token)
+    private readonly MemoryDataService _dataService = new();
+    private CommonTypes.EntityToken Token { get; } = token;
+
+    public async Task<IEnumerable<TEntity>> GetAll()
     {
+        return (IEnumerable<TEntity>)await _dataService.GetData(Token);
     }
 
-    public Task<IEnumerable<TEntity>> GetAll()
+    public async Task<IEnumerable<TEntity>> GetById(Guid id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<IEnumerable<TEntity>> GetById(Guid id)
-    {
-        throw new NotImplementedException();
+        var list = await _dataService.GetData(Token);
+        return (IEnumerable<TEntity>)list.Where(place => place.Id == id);
     }
 }

@@ -2,46 +2,75 @@
 @attribute [StreamRendering]
 
 @using DnetLibrary.Domain
+@using DnetLibrary.Repo
+
+@inject RepoMan Repo
 
 <PageTitle>Home</PageTitle>
 
 <h1>Places of interest in Nepal</h1>
 
-@if (Places!.Any())
-{
-    @foreach (var place in Places!)
+<div class="mt-5">
+    @if (Mountains!.Any())
     {
-        <p>@place.Name in @place.Region.ToString() - @place.Id</p>
-    }
+        <h3>Mountains</h3>
+        <table class="table table-light">
+            <thead>
+            <th>Name</th>
+            <th>Region</th>
+            <th>GUID</th>
+            </thead>
+            @foreach (var place in Mountains!)
+            {
+                <tr>
+                    <td>@place.Name </td> <td>@place.Region.ToString()</td> <td class="small text-black-50">@place.Id</td>
+                </tr>
+            }
+        </table>
 
-}
-else
-{
-    <p>Loading...</p>
-}
+    }
+    else
+    {
+        <p>Loading mountains...</p>
+    }
+</div>
+
+<div class="mt-5">
+    @if (Temples!.Any())
+    {
+    <h3>Temples</h3>
+    <table class="table table-light">
+        <thead>
+        <th>Name</th>
+        <th>Region</th>
+        <th>GUID</th>
+        </thead>
+        @foreach (var place in Temples!)
+        {
+        <tr>
+            <td>@place.Name </td> <td>@place.Region.ToString()</td> <td class="small text-black-50">@place.Id</td>
+        </tr>
+        }
+    </table>
+
+    }
+    else
+    {
+    <p>Loading temples...</p>
+    }
+</div>
+
 
 @code{
 
-    List<EntityBase>? Places { get; } = [];
-
+    IEnumerable<Mountain> Mountains { get; set; } = [];
+    IEnumerable<Temple> Temples { get; set; } = [];
     protected override async Task OnInitializedAsync()
     {
+
         await Task.Delay(500);
-
-        try
-        {
-            Places?.AddRange(new List<EntityBase>
-            {
-                new Temple{Name="Banglamukhi Mandir",Region = CommonTypes.Region.Pahad},
-                new Mountain{Name="Pumori", Region = CommonTypes.Region.Himal}
-            });
-            
-        }
-        catch (Exception e)
-        {
-            Console.Write(e.ToString());
-        }
-
+        Mountains = await Repo.Mountains.GetAll();
+        Temples = await Repo.Temples.GetAll();
 
     }
 
