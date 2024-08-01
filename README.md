@@ -1,0 +1,2 @@
+# dnet
+Dotnet (Blazor) webapp
