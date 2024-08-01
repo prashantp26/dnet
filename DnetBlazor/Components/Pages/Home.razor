@@ -1,7 +1,48 @@
 ﻿@page "/"
+@attribute [StreamRendering]
+
+@using DnetLibrary.Domain
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Places of interest in Nepal</h1>
 
-Welcome to your new app.
+@if (Places.Any())
+{
+    @foreach (var place in Places)
+    {
+        <p>@place.Name in @place.Region.ToString() - @place.Id</p>
+    }
+
+}
+else
+{
+    <p>Loading...</p>
+}
+
+@code{
+
+    List<EntityBase>? Places { get; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+
+        try
+        {
+            Places?.AddRange(new List<EntityBase>
+            {
+                new Temple{Name="Banglamukhi",Region = CommonTypes.Region.Pahad},
+                new Mountain{Name="Gaurishanker", Region = CommonTypes.Region.Himal}
+            });
+            
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+        }
+
+
+    }
+
+}

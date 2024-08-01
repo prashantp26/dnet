@@ -7,5 +7,5 @@ public abstract record EntityBase: IBaseEntity
     public virtual Guid Id { get; }
  
     public required string Name;
-    public CommonTypes.Region Region;
+    public required CommonTypes.Region Region;
 }
