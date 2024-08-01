@@ -7,9 +7,9 @@
 
 <h1>Places of interest in Nepal</h1>
 
-@if (Places.Any())
+@if (Places!.Any())
 {
-    @foreach (var place in Places)
+    @foreach (var place in Places!)
     {
         <p>@place.Name in @place.Region.ToString() - @place.Id</p>
     }
@@ -32,8 +32,8 @@ else
         {
             Places?.AddRange(new List<EntityBase>
             {
-                new Temple{Name="Banglamukhi",Region = CommonTypes.Region.Pahad},
-                new Mountain{Name="Gaurishanker", Region = CommonTypes.Region.Himal}
+                new Temple{Name="Banglamukhi Mandir",Region = CommonTypes.Region.Pahad},
+                new Mountain{Name="Pumori", Region = CommonTypes.Region.Himal}
             });
             
         }

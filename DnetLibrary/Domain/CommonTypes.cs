@@ -8,5 +8,11 @@ public record CommonTypes
         Pahad,
         Terai
     }
+
+    public enum EntityToken
+    {
+        Mountains,
+        Temples
+    }
     
 }
