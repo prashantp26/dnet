@@ -3,6 +3,7 @@
 
 @using DnetLibrary.Domain
 @using DnetLibrary.Repo
+@using DnetBlazor.Components.Common
 
 @inject RepoMan Repo
 
@@ -10,64 +11,24 @@
 
 <h1>Places of interest in Nepal</h1>
 
-<div class="mt-5">
-    @if (Mountains!.Any())
-    {
-        <h3>Mountains</h3>
-        <table class="table table-light">
-            <thead>
-            <th>Name</th>
-            <th>Region</th>
-            <th>GUID</th>
-            </thead>
-            @foreach (var place in Mountains!)
-            {
-                <tr>
-                    <td>@place.Name </td> <td>@place.Region.ToString()</td> <td class="small text-black-50">@place.Id</td>
-                </tr>
-            }
-        </table>
+<a href="https://github.com/prashantp26/dnet/blob/main/README.md">Read Me [github]</a>
 
-    }
-    else
-    {
-        <p>Loading mountains...</p>
-    }
+<PlaceTable Places="Temples" Title="Temples"/>
+
+<PlaceTable Places="Mountains" Title="Mountains"/>
+
+
+<div class="my-5 border small text-black-50 alert alert-light" role="alert">
+    This repo attempts to demonstrate use of some C#/.Net, and to some extent, relevant CS concepts through a Blazor webapp project in .Net 8
 </div>
-
-<div class="mt-5">
-    @if (Temples!.Any())
-    {
-    <h3>Temples</h3>
-    <table class="table table-light">
-        <thead>
-        <th>Name</th>
-        <th>Region</th>
-        <th>GUID</th>
-        </thead>
-        @foreach (var place in Temples!)
-        {
-        <tr>
-            <td>@place.Name </td> <td>@place.Region.ToString()</td> <td class="small text-black-50">@place.Id</td>
-        </tr>
-        }
-    </table>
-
-    }
-    else
-    {
-    <p>Loading temples...</p>
-    }
-</div>
-
 
 @code{
 
     IEnumerable<Mountain> Mountains { get; set; } = [];
     IEnumerable<Temple> Temples { get; set; } = [];
+    
     protected override async Task OnInitializedAsync()
     {
-
         await Task.Delay(500);
         Mountains = await Repo.Mountains.GetAll();
         Temples = await Repo.Temples.GetAll();

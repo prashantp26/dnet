@@ -33,7 +33,8 @@ public class MemoryDataService
         new[]{
         new Temple { Name = "Bangalamukhi", Region = CommonTypes.Region.Pahad },
         new Temple { Name = "Gadhimai", Region = CommonTypes.Region.Terai },
-        new Temple {Name = "Muktinath", Region = CommonTypes.Region.Himal }
+        new Temple {Name = "Muktinath", Region = CommonTypes.Region.Himal },
+        new Temple {Name = "Nyatapol", Region = CommonTypes.Region.Pahad }
         };
     
         

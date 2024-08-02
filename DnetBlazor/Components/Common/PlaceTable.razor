@@ -1,0 +1,39 @@
+@using DnetLibrary.Domain
+@using DnetLibrary.Domain.Lib
+
+<div class="mt-5">
+    @if (Places!.Any())
+    {
+    <h3>@Title</h3>
+    <table class="table table-light">
+        <thead>
+        <th>Name</th>
+        <th>Region</th>
+        <th>GUID</th>
+        <th>Hash</th>
+        </thead>
+        @foreach (var place in Places!)
+        {
+        <tr>
+            <td>@place.Name </td>
+            <td>@place.Region.ToString()</td>
+            <td class="small text-black-50">@place.Id</td>
+            <td>@place.PlaceNameHash()</td>
+        </tr>
+        }
+    </table>
+
+    }
+    else
+    {
+    <p>Loading mountains...</p>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public IEnumerable<EntityBase>? Places { get; set; }
+
+    [Parameter] public string Title { get; set; } = "Placesss";
+
+}

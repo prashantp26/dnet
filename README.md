@@ -1,7 +1,7 @@
 # C#/.Net + Blazor 
 
 > [!note]
-> As a project, it is essentially the foundations for a homebrew ORM - a simple learning WIP tool.
+> As a project, this is essentially the foundations for a homebrew ORM - a simple learning WIP tool.
 > Bullet items with ~~strikethrough~~ represent unfinished tasks.
 
 ```mermaid
@@ -26,13 +26,15 @@ flowchart TB
     - ~~anonymous types~~
     - ~~boxing/unboxing~~
 
-### Data Structures
+### Data Structures / Algo's
 - enumerables/collections
 - ~~Graphs and Trees~~
+- ~~recursion~~
+- Binary search tree
+
 
 ### Control flow
 - conditionals
-- ~~recursion~~
 
 ### OOP
 - polymorphism
@@ -49,7 +51,7 @@ flowchart TB
 
 #### .NET Libraries
 - LINQ
-- ~~EF Core~~
+- EF Core
 
 ### Concurrent programming
 - async/await using Task
@@ -59,4 +61,14 @@ flowchart TB
 - ~~Interactive WASM (webassembly)~~
 - ~~Interactive AUTO~~
 
+### ~~Testing~~ (yet to write tests)
+- libs: xUnit, NUnit
+- unit
+- integration
+- regression
+
+### ~~Big-O~~ (demonstrate with algo's)
+- Best: constant time
+- Good: O(Logn), linear, O(nLogn)
+- Bad: quadratic, exponential
 
