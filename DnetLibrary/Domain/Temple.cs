@@ -1,5 +1,3 @@
-using DnetLibrary.Repo;
-
 namespace DnetLibrary.Domain;
 
 public record Temple : EntityBase

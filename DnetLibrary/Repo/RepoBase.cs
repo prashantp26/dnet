@@ -3,7 +3,8 @@ using DnetLibrary.Repo.EntityRepo;
 namespace DnetLibrary.Repo;
 
 // any new domain type inherits basic repo functionality from this class
-public abstract class RepoBase<TEntity>(IRepoContext<TEntity> context):  IRepository<TEntity> where TEntity: IBaseEntity
+public abstract class RepoBase<TEntity>(IRepoContext<TEntity> context) : IRepository<TEntity>
+    where TEntity : IBaseEntity
 {
     protected readonly IRepoContext<TEntity> Context = context;
 

@@ -10,7 +10,8 @@ public class MemoryDataContext<TEntity>(CommonTypes.EntityToken token) : IRepoCo
 
     public async Task<IEnumerable<TEntity>> GetAll()
     {
-        return (IEnumerable<TEntity>)await _dataService.GetData(Token);
+        var list = await _dataService.GetData(Token);
+        return (IEnumerable<TEntity>)list;
     }
 
     public async Task<IEnumerable<TEntity>> GetById(Guid id)
