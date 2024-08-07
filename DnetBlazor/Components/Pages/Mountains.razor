@@ -1,0 +1,23 @@
+@page "/mountains"
+
+@using DnetLibrary.Domain
+@using DnetLibrary.Repo
+@using DnetBlazor.Components.Common
+
+@inject RepoMan RepoMan
+
+<h3>Places of Interest: Mountains</h3>
+
+<PlaceTable places="@mountains" Title="Mountains"/>
+
+@code {
+
+    IEnumerable<Mountain> mountains { get; set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        mountains = await RepoMan.Mountains.GetAll();
+        
+    }
+
+}
